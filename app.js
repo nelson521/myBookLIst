@@ -1,3 +1,5 @@
+let form = document.getElementById('book-form');
+
 function Book(title, author, isbn) {
   this.title = title;
   this.author = author;
@@ -6,11 +8,10 @@ function Book(title, author, isbn) {
 
 function UI() {}
 
-document.addEventListener('submit', function (e) {
+form.addEventListener('submit', function (e) {
   const title = document.querySelector('#title').value;
   const author = document.querySelector('#author').value;
   const isbn = document.querySelector('#isbn').value;
 
-  console.log(title, author, isbn);
   e.preventDefault();
 });
