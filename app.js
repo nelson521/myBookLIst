@@ -20,6 +20,19 @@ UI.prototype.addToList = function (book) {
   bookList.appendChild(tr);
 };
 
+UI.prototype.emptyAlarm = function (book) {
+  let div = document.createElement('div');
+  let heading = document.querySelector('h1');
+  div.className = 'card-panel teal lighten-2';
+  div.textContent = 'Please Fill Out';
+  heading.parentElement.insertBefore(div, heading);
+  console.log(div);
+
+  setTimeout(function () {
+    document.querySelector('.card-panel').remove();
+  }, 3000);
+};
+
 form.addEventListener('submit', function (e) {
   const title = document.querySelector('#title').value;
   const author = document.querySelector('#author').value;
@@ -29,7 +42,9 @@ form.addEventListener('submit', function (e) {
   let ui = new UI(book);
 
   ui.addToList(book);
+  if (title === '' || author === '' || isbn === '') {
+    ui.emptyAlarm(book);
+  }
 
-  console.log(title, author, isbn);
   e.preventDefault();
 });
