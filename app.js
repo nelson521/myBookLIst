@@ -20,7 +20,7 @@ UI.prototype.addToList = function (book) {
   bookList.appendChild(tr);
 };
 
-UI.prototype.emptyAlarm = function (book) {
+UI.prototype.emptyAlarm = function () {
   let div = document.createElement('div');
   let heading = document.querySelector('h1');
   div.className = 'card-panel teal lighten-2';
@@ -31,6 +31,10 @@ UI.prototype.emptyAlarm = function (book) {
   setTimeout(function () {
     document.querySelector('.card-panel').remove();
   }, 3000);
+};
+
+UI.prototype.clearInput = function () {
+  form.reset();
 };
 
 form.addEventListener('submit', function (e) {
@@ -45,6 +49,8 @@ form.addEventListener('submit', function (e) {
   if (title === '' || author === '' || isbn === '') {
     ui.emptyAlarm(book);
   }
+
+  ui.clearInput(book);
 
   e.preventDefault();
 });
