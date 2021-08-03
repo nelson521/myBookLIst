@@ -11,19 +11,23 @@ function UI() {}
 UI.prototype.addToList = function (book) {
   const bookList = document.querySelector('#book-list');
   const tr = document.createElement('tr');
-
+  tr.classList.add('removeLine');
   tr.innerHTML = `
     <td>${book.title}<td>
     <td>${book.author}<td>
     <td>${book.isbn}<td>
-    <button class="btn removeLine">Remove</button>
+    <button class="btn">Remove</button>
   `;
   bookList.appendChild(tr);
 
   tr.addEventListener('click', function (e) {
-    if (e.target.parentElement.parentElement) {
+    if (e.target.parentElement.parentElement.classList.contains('removeLine')) {
       tr.remove();
     }
+
+    // console.log(
+
+    // );
   });
 };
 
@@ -43,10 +47,6 @@ UI.prototype.clearInput = function () {
   form.reset();
 };
 
-// UI.prototype.deleteRow = function () {
-//   console.log('Click');
-// };
-
 form.addEventListener('submit', function (e) {
   const title = document.querySelector('#title').value;
   const author = document.querySelector('#author').value;
@@ -64,16 +64,3 @@ form.addEventListener('submit', function (e) {
 
   e.preventDefault();
 });
-
-// UI.addEventListener('click', function (e) {
-//   const title = document.querySelector('#title').value;
-//   const author = document.querySelector('#author').value;
-//   const isbn = document.querySelector('#isbn').value;
-
-//   let book = new Book(title, author, isbn);
-//   let ui = new UI(book);
-
-//   ui.deleteRow(book);
-
-//   e.preventDefault();
-// });
