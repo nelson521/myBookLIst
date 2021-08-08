@@ -19,15 +19,10 @@ UI.prototype.addToList = function (book) {
     <button class="btn">Remove</button>
   `;
   bookList.appendChild(tr);
-
   tr.addEventListener('click', function (e) {
     if (e.target.parentElement.parentElement.classList.contains('removeLine')) {
       tr.remove();
     }
-
-    // console.log(
-
-    // );
   });
 };
 
